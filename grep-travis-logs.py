@@ -13,7 +13,7 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         '-s', '--slug',
-        default= 'python-pillow/Pillow',
+        default='python-pillow/Pillow',
         help="Repo slug")
     parser.add_argument(
         '-p', '--pattern',
@@ -32,9 +32,7 @@ if __name__ == "__main__":
     from travispy import TravisPy  # pip install travispy
 
     t = TravisPy()
-#     repo = t.repo(args.slug)
 
-    args.number=None
     build = t.builds(slug=args.slug, number=args.number)[0]
 
     job_ids = sorted(build.job_ids)
