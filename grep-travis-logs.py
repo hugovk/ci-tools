@@ -6,6 +6,7 @@ For example: python grep-travis-logs.py -p "tests in" -n 3928.2
 """
 from __future__ import print_function, unicode_literals
 import argparse
+import re
 
 
 def split_build_number(number):
@@ -69,8 +70,7 @@ if __name__ == "__main__":
         if args.pattern:
             lines = log.body.splitlines()
             for line in lines:
-                # TODO use regex
-                if args.pattern in line:
+                if re.search(args.pattern, line):
                     print(line)
         else:
             print(log.body)
