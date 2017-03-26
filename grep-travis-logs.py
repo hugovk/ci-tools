@@ -73,7 +73,6 @@ if __name__ == "__main__":
                 if re.search(args.pattern, line):
                     print(line)
         else:
-            print(log.body)
-
+            print(log.body.encode("utf-8"))
 
 # End of file
