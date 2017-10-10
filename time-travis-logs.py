@@ -5,7 +5,6 @@ For example: python time-travis-logs.py -n 3928
 """
 from __future__ import print_function, unicode_literals
 import argparse
-import sys
 
 import dateutil.parser as dp
 
