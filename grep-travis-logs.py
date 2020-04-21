@@ -4,7 +4,6 @@
 For example: python grep-travis-logs.py -p "tests in" -n 3928
 For example: python grep-travis-logs.py -p "tests in" -n 3928.2
 """
-from __future__ import print_function, unicode_literals
 import argparse
 import re
 
@@ -65,7 +64,7 @@ if __name__ == "__main__":
 
         if not args.quiet:
             print()
-            print("#{}".format(job.number))
+            print(f"#{job.number}")
         log = t.log(job.log_id)
         if args.pattern:
             lines = log.body.splitlines()

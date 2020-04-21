@@ -5,12 +5,10 @@ cache: pip
 # https://en.wikipedia.org/wiki/CPython#Version_history
 python:
  - pypy3
- - pypy
- - 2.7
+ - 3.9-dev
+ - 3.8
+ - 3.7
  - 3.6
- - 3.5
-
-sudo: false
 
 install:
  - pip install -U pyflakes pycodestyle
