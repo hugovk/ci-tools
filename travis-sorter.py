@@ -12,32 +12,6 @@ https://github.com/travis-ci/travis.rb#installation
 $ # Check build 22 of hugovk/numpy, and skip the first job (it's a single stage)
 $ travis-sorter.py hugovk/numpy 22 --skip 1
 travis show -r hugovk/numpy 22
-0
-Build #22:  Merge pull request #17127 from bashtage/npymath-remove
-State:         passed
-Type:          push
-Branch:        master
-Commit:        f842c48
-Compare URL:   https://github.com/hugovk/numpy/compare/db866874ccb8...f842c487da50
-Duration:      2 hrs 43 min 42 sec
-Started:       2020-09-03 17:18:58
-Finished:      2020-09-03 18:14:36
-
-#22.1 passed:    7 min 45 sec   os: linux, python: 3.8
-#22.2 passed:    6 min 53 sec   os: linux, python: 3.6
-#22.3 passed:    7 min 41 sec   os: linux, python: 3.7
-#22.4 passed:    9 min 41 sec   os: linux, python: 3.9-dev
-#22.5 passed:    9 min 15 sec   os: linux, python: 3.8, env: USE_DEBUG=1
-#22.6 passed:    18 min 16 sec  os: linux, python: 3.7, env: USE_WHEEL=1 RUN_FULL_TESTS=1 RUN_COVERAGE=1 INSTALL_PICKLE5=1
-#22.7 passed:    7 min 48 sec   os: linux, python: 3.7, env: USE_SDIST=1
-#22.8 passed:    11 min 14 sec  os: linux, python: 3.7, env: PYTHONOPTIMIZE=2 BLAS=None LAPACK=None ATLAS=None NPY_BLAS_ORDER=mkl,blis,openblas,atlas,blas NPY_LAPACK_ORDER=MKL,OPENBLAS,ATLAS,LAPACK USE_ASV=1
-#22.9 passed:    7 min 45 sec   os: linux, python: 3.7, env: NPY_RELAXED_STRIDES_CHECKING=0 DOWNLOAD_OPENBLAS=1 CHECK_BLAS=1 NPY_USE_BLAS_ILP64=1
-#22.10 passed:   9 min 35 sec   os: linux, python: 3.7, env: USE_WHEEL=1 NPY_RELAXED_STRIDES_DEBUG=1
-#22.11 passed:   8 min 15 sec   os: linux, python: 3.7, env: NUMPY_EXPERIMENTAL_ARRAY_FUNCTION=0
-#22.12 passed:   8 min 25 sec   os: linux, python: 3.7, env: BLAS=None LAPACK=None ATLAS=None
-#22.13 passed:   17 min 6 sec   os: linux, python: 3.7, env: DOWNLOAD_OPENBLAS=1 ATLAS=None
-#22.14 passed:   7 min 39 sec   os: linux, python: 3.7, env: DOWNLOAD_OPENBLAS=1 NPY_USE_BLAS_ILP64=1 ATLAS=None
-#22.15 passed:   26 min 24 sec  os: linux, python: 3.7, env: DOWNLOAD_OPENBLAS=1 ATLAS=None
 [8, 7, 8, 10, 9, 18, 8, 11, 8, 10, 8, 8, 17, 8, 26]
 [7, 8, 10, 9, 18, 8, 11, 8, 10, 8, 8, 17, 8, 26]
 Before:
@@ -237,8 +211,8 @@ Finished:      2018-10-27 18:54:14
     # Real use
     exitcode, output = subprocess.getstatusoutput(cmd)
 
-    print(exitcode)
-    print(output)
+    # print(exitcode)
+    # print(output)
     if exitcode != 0:
         print(output)
         sys.exit(exitcode)
