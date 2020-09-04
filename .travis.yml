@@ -11,12 +11,11 @@ python:
  - 3.6
 
 install:
- - pip install -U pyflakes pycodestyle
+ - pip install -U flake8
 
 script:
  # Static analysis
- - pyflakes .
- - pycodestyle --statistics --count .
+ - flake8 --statistics --count .
 
 matrix:
   fast_finish: true
