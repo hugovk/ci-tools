@@ -161,8 +161,10 @@ def simulate(jobs, limit):
     summarise(jobs)
 
 
-def do_thing(repo, number):
+def do_thing(repo, number, com):
     cmd = f"travis show -r {repo} {number or ''}"
+    if com:
+        cmd += " --com"
     # cmd = f"travis show --com -r {repo} {number or ''}"
     print(cmd)
 
@@ -242,6 +244,9 @@ if __name__ == "__main__":
         "or an org/repo slug and optionally build number",
     )
     parser.add_argument(
+        "--com", action="store_true", help="Check travis-ci.com, not .org"
+    )
+    parser.add_argument(
         "-l", "--limit", type=int, default=5, help="Concurrent jobs limit"
     )
     parser.add_argument(
@@ -259,7 +264,7 @@ if __name__ == "__main__":
             number = args.input[1]
         except IndexError:
             number = None
-        job_times = do_thing(args.input[0], number)
+        job_times = do_thing(args.input[0], number, args.com)
 
     job_times = job_times[args.skip :]
     print(job_times)
