@@ -78,6 +78,9 @@ def get_arrow(last_standing: list, ci_name: str, new_position: int) -> str:
     if not last_standing:
         return ""
 
+    if ci_name not in last_standing:
+        return "*️⃣"
+
     change = last_standing.index(ci_name) - new_position
     if change > 0:
         return "⬆️"
