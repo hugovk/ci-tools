@@ -51,7 +51,8 @@ def get_medal(i: int) -> str:
         return "🥈"
     if i == 2:
         return "🥉"
-    return "4️⃣"
+    # 4️⃣...
+    return f"{i+1}" + chr(0xFE0F) + chr(0x20E3)
 
 
 def get_delta(value: dt.datetime, python_release: dt.datetime) -> str:
