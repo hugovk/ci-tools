@@ -38,7 +38,7 @@ def main(args):
         urls.append(f"https://ci.appveyor.com/project/{user}/{repo}")
 
     if check_pattern(args.pattern, ".travis.yml") and Path(".travis.yml").is_file():
-        urls.append(f"https://travis-ci.org/github/{user}/{repo}")
+        urls.append(f"https://travis-ci.com/github/{user}/{repo}")
 
     if (
         check_pattern(args.pattern, ".github/workflows/")
