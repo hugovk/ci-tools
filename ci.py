@@ -24,7 +24,7 @@ def check_pattern(pattern, thing):
 def main(args):
     # Find the user/repo of the Git origin
     git_repo = git.Repo(".")
-    origin_url = list(git_repo.remotes.origin.urls)[0]
+    origin_url = list(git_repo.remotes.origin.urls)[0].removesuffix(".git")
     print(origin_url)
     user, repo = origin_url.rstrip("/").split("/")[-2:]
     print(user)
