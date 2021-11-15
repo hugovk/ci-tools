@@ -16,6 +16,9 @@ def released(date_string: str) -> dt.datetime:
     return dt.datetime.strptime(date_string, "%Y-%m-%d %H:%M")
 
 
+# Useful for testing when they're not yet released
+today = dt.datetime.today()
+
 releases = {
     "3.8": {
         "python_release": released("2019-10-14 23:15"),
@@ -53,7 +56,7 @@ releases = {
             # https://github.com/actions/setup-python/issues/249
             "GitHub Actions": released("2021-10-05 08:20"),
             # https://travis-ci.community/t/add-python-3-10/12220
-            # "Travis CI":  released("2021-11-15 19:58"),  # TODO
+            "Travis CI": today,  # TODO
         },
     },
 }
