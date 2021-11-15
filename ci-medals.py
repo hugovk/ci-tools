@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Award medals for CIs based on time to support a new Python release
+
+https://twitter.com/hugovk/status/1321536957965574151
 """
 import argparse
 import datetime as dt
@@ -39,6 +41,19 @@ releases = {
             "GitHub Actions": released("2020-10-06 13:58"),
             # https://travis-ci.community/t/python-3-9-0-build/10091
             "Travis CI": released("2020-10-26 19:58"),
+        },
+    },
+    "3.10": {
+        "python_release": released("2021-10-04 20:00"),
+        "ci_releases": {
+            # https://github.com/appveyor/ci/issues/3741
+            "AppVeyor": released("2021-11-02 17:53"),
+            # https://github.com/actions/virtual-environments/issues/4226
+            "Azure Pipelines": released("2021-10-22 17:53"),
+            # https://github.com/actions/setup-python/issues/249
+            "GitHub Actions": released("2021-10-05 08:20"),
+            # https://travis-ci.community/t/add-python-3-10/12220
+            # "Travis CI":  released("2021-11-15 19:58"),  # TODO
         },
     },
 }
