@@ -10,29 +10,30 @@ import dateutil.parser as dp
 
 def iso2epoch(timestamp):
     parsed_t = dp.parse(timestamp)
-    t_in_seconds = parsed_t.strftime('%s')
+    t_in_seconds = parsed_t.strftime("%s")
     return int(t_in_seconds)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="TODO",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="TODO", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
     parser.add_argument(
-        '-s', '--slug',
-        default='python-pillow/Pillow',
-        help="Repo slug")
+        "-s", "--slug", default="python-pillow/Pillow", help="Repo slug"
+    )
     parser.add_argument(
-        '-p', '--pattern',
-        help="Pattern to find. Omit to print full log")
+        "-p", "--pattern", help="Pattern to find. Omit to print full log"
+    )
     parser.add_argument(
-        '-n', '--number',
-        type=int,
-        help="Build number. Omit for latest build")
+        "-n", "--number", type=int, help="Build number. Omit for latest build"
+    )
     parser.add_argument(
-        '-q', '--quiet', action='store_true',
+        "-q",
+        "--quiet",
+        action="store_true",
         default=False,
-        help="Quiet means only print from logs, with no extra build info")
+        help="Quiet means only print from logs, with no extra build info",
+    )
     args = parser.parse_args()
 
     # Slow to import, no need for --help
@@ -40,19 +41,19 @@ if __name__ == "__main__":
 
     t = TravisPy()
 
-    for number in range(args.number-100, args.number):
+    for number in range(args.number - 100, args.number):
         # print(number)
 
         build = t.builds(slug=args.slug, number=number)[0]
 
-#         print(build['started_at'])
-#         print(build['finished_at'])
-        start_seconds = iso2epoch(build['started_at'])
-        finish_seconds = iso2epoch(build['finished_at'])
-#         print(start_seconds)
-#         print(finish_seconds)
+        # print(build['started_at'])
+        # print(build['finished_at'])
+        start_seconds = iso2epoch(build["started_at"])
+        finish_seconds = iso2epoch(build["finished_at"])
+        # print(start_seconds)
+        # print(finish_seconds)
         seconds = finish_seconds - start_seconds
-#         print(seconds)
+        # print(seconds)
         m, s = divmod(seconds, 60)
         print("%02dm%02ds\t%d" % (m, s, number))
 

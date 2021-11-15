@@ -24,22 +24,27 @@ def split_build_number(number):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Grep logs of each build job for a Travis CI build",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
     parser.add_argument(
-        '-s', '--slug',
-        default='python-pillow/Pillow',
-        help="Repo slug")
+        "-s", "--slug", default="python-pillow/Pillow", help="Repo slug"
+    )
     parser.add_argument(
-        '-p', '--pattern',
-        help="Pattern to find. Omit to print full log")
+        "-p", "--pattern", help="Pattern to find. Omit to print full log"
+    )
     parser.add_argument(
-        '-n', '--number',
+        "-n",
+        "--number",
         type=float,
-        help="Build number (and optional job number). Omit for latest build")
+        help="Build number (and optional job number). Omit for latest build",
+    )
     parser.add_argument(
-        '-q', '--quiet', action='store_true',
+        "-q",
+        "--quiet",
+        action="store_true",
         default=False,
-        help="Quiet means only print from logs, with no extra build info")
+        help="Quiet means only print from logs, with no extra build info",
+    )
     args = parser.parse_args()
 
     build_no, job_no = split_build_number(args.number)
@@ -48,7 +53,7 @@ if __name__ == "__main__":
     from travispy import TravisPy  # pip install travispy
 
     t = TravisPy()
-#     repo = t.repo(args.slug)
+    # repo = t.repo(args.slug)
 
     build = t.builds(slug=args.slug, number=build_no)[0]
 
