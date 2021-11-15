@@ -74,7 +74,7 @@ def get_medal(i: int) -> str:
 
 
 def get_delta(value: dt.datetime, python_release: dt.datetime) -> str:
-    return humanize.naturaldelta(value - python_release)
+    return humanize.naturaldelta(value - python_release, months=False)
 
 
 def get_name(name: str, twitter: bool) -> str:
