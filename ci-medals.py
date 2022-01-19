@@ -56,7 +56,7 @@ releases = {
             # https://github.com/actions/setup-python/issues/249
             "GitHub Actions": released("2021-10-05 08:20"),
             # https://travis-ci.community/t/add-python-3-10/12220
-            "Travis CI": today,  # TODO
+            "Travis CI": released("2022-01-19 09:33"),
         },
     },
 }
