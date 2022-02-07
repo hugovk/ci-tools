@@ -94,7 +94,7 @@ def summarise(jobs):
     for job in jobs:
         before = " " * job.started
         active = "*" * job.length
-        print("{:2d} {}{}".format(job.id, before, active))
+        print(f"{job.id:2d} {before}{active}")
         if job.started + job.length > end:
             end = job.started + job.length
     # for job in jobs:
@@ -103,7 +103,7 @@ def summarise(jobs):
     print("   " + "-" * end)
 
 
-class Job(object):
+class Job:
     def __init__(self, length):
         global count
         self.id = count
