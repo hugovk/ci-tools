@@ -63,7 +63,7 @@ releases = {
         "python_release": released("2022-10-24 19:48"),
         "ci_releases": {
             # https://github.com/appveyor/ci/issues/3844
-            "AppVeyor": today,
+            "AppVeyor": released("2022-11-07 20:57"),
             # https://github.com/actions/runner-images/issues/6459
             "Azure Pipelines": released("2022-10-26 20:00"),
             # https://github.com/actions/setup-python/issues/531#issuecomment-1291855440
