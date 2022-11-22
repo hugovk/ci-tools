@@ -68,8 +68,8 @@ releases = {
             "Azure Pipelines": released("2022-10-26 20:00"),
             # https://github.com/actions/setup-python/issues/531#issuecomment-1291855440
             "GitHub Actions": released("2022-10-26 10:57"),
-            # https://travis-ci.community/t/please-add-image-for-python-3-11/13384
-            "Travis CI": today,
+            # https://travis-ci.community/t/please-add-image-for-python-3-11/13384/3?u=hugovk
+            "Travis CI": released("2022-11-22 5:11"),
         },
     },
 }
