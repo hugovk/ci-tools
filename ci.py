@@ -21,7 +21,7 @@ def check_pattern(pattern, thing):
     return False
 
 
-def main(args):
+def do_ci(args):
     # Find the user/repo of the Git origin
     git_repo = git.Repo(".")
     origin_url = list(git_repo.remotes.origin.urls)[0].removesuffix(".git")
@@ -54,7 +54,7 @@ def main(args):
             os.system(cmd)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Check for CI config files in this repo, "
         "then open the CI webpages.",
@@ -73,7 +73,8 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     print(args)
-    main(args)
+    do_ci(args)
 
 
-# End of file
+if __name__ == "__main__":
+    main()
