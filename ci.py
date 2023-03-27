@@ -15,13 +15,18 @@ from pathlib import Path
 import git  # pip install GitPython
 
 
-def check_pattern(pattern, thing):
+def check_pattern(pattern: str, thing: str) -> bool:
     if not pattern or pattern in thing:
         return True
     return False
 
 
-def do_ci(args):
+def get_gitlab_url(origin_url: str) -> str:
+    url = origin_url.split("@")[1].replace(":", "/")
+    return "https://" + url
+
+
+def do_ci(args: argparse.Namespace) -> None:
     # Find the user/repo of the Git origin
     git_repo = git.Repo(".")
     origin_url = list(git_repo.remotes.origin.urls)[0].removesuffix(".git")
@@ -46,6 +51,12 @@ def do_ci(args):
     ):
         urls.append(f"https://github.com/{user}/{repo}/actions")
 
+    if (
+        check_pattern(args.pattern, ".gitlab-ci.yml")
+        and Path(".gitlab-ci.yml").is_file()
+    ):
+        urls.append(get_gitlab_url(origin_url))
+
     if urls:
         # 'open 1 2 3' is faster than 3 x webbrowser.open_new_tab
         cmd = "open " + " ".join(urls)
@@ -54,7 +65,7 @@ def do_ci(args):
             os.system(cmd)
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Check for CI config files in this repo, "
         "then open the CI webpages.",
@@ -63,7 +74,7 @@ def main():
     parser.add_argument(
         "pattern",
         nargs="?",
-        help="Only open webpages for config matching this path (eg. travis)",
+        help="Only open webpages for config matching this path (eg. github)",
     )
     parser.add_argument(
         "-n",
@@ -72,7 +83,6 @@ def main():
         help="Show but don't open webpages",
     )
     args = parser.parse_args()
-    print(args)
     do_ci(args)
 
 
