@@ -128,7 +128,6 @@ def count_status(jobs, status):
 
 
 def simulate(jobs, limit):
-
     time = 0
 
     # summarise(jobs)
