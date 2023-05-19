@@ -55,7 +55,7 @@ def do_ci(args: argparse.Namespace) -> None:
         check_pattern(args.pattern, ".gitlab-ci.yml")
         and Path(".gitlab-ci.yml").is_file()
     ):
-        urls.append(get_gitlab_url(origin_url))
+        urls.append(get_gitlab_url(origin_url) + "/-/pipelines")
 
     if urls:
         # 'open 1 2 3' is faster than 3 x webbrowser.open_new_tab
