@@ -21,7 +21,7 @@ def check_pattern(pattern: str, thing: str) -> bool:
     return False
 
 
-def get_gitlab_url(origin_url: str) -> str:
+def get_gitlab_url(origin_url: str) -> str | None:
     if "gitlab" not in origin_url:
         return None
     url = origin_url.split("@")[1].replace(":", "/")
