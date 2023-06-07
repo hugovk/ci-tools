@@ -22,6 +22,8 @@ def check_pattern(pattern: str, thing: str) -> bool:
 
 
 def get_gitlab_url(origin_url: str) -> str:
+    if "gitlab" not in origin_url:
+        return None
     url = origin_url.split("@")[1].replace(":", "/")
     return "https://" + url
 
@@ -55,7 +57,9 @@ def do_ci(args: argparse.Namespace) -> None:
         check_pattern(args.pattern, ".gitlab-ci.yml")
         and Path(".gitlab-ci.yml").is_file()
     ):
-        urls.append(get_gitlab_url(origin_url) + "/-/pipelines")
+        url = get_gitlab_url(origin_url)
+        if url:
+            urls.append(url + "/-/pipelines")
 
     if urls:
         # 'open 1 2 3' is faster than 3 x webbrowser.open_new_tab
