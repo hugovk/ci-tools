@@ -4,6 +4,8 @@ Award medals for CIs based on time to support a new Python release
 
 https://twitter.com/hugovk/status/1321536957965574151
 """
+from __future__ import annotations
+
 import argparse
 import datetime as dt
 from pprint import pprint  # noqa: F401

@@ -3,6 +3,8 @@
 
 For example: python time-travis-logs.py -n 3928
 """
+from __future__ import annotations
+
 import argparse
 
 import dateutil.parser as dp

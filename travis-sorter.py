@@ -80,6 +80,8 @@ After:
     ****
 1234567890123456789 = 19 minutes
 """
+from __future__ import annotations
+
 import argparse
 import re
 import subprocess
