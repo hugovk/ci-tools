@@ -99,7 +99,7 @@ def get_medal(i: int) -> str:
     if i == 2:
         return "🥉"
     # 4️⃣...
-    return f"{i+1}" + chr(0xFE0F) + chr(0x20E3)
+    return f"{i+1}" + chr(0xFE0F) + chr(0x20E3) + "    "
 
 
 def get_delta(value: dt.datetime, python_release: dt.datetime) -> str:
@@ -155,7 +155,7 @@ def do_year(
         delta = get_delta(value, python_release)
         name = get_name(ci, twitter)
         arrow = get_arrow(last_standing, ci, i)
-        print(f"{medal}\t{delta}: {name} {arrow}")
+        print(f"{medal:<4}{delta}: {name} {arrow}")
         new_standing.append(ci)
 
     print()
