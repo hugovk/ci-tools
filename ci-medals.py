@@ -79,11 +79,11 @@ releases = {
         "ci_releases": {
             # https://github.com/appveyor/ci/issues/3879
             "AppVeyor": today,
-            # https://github.com/actions/python-versions/releases/tag/3.12.0-6381888192
-            "Azure Pipelines": released("2023-10-03 09:22"),
             # https://github.com/actions/setup-python/issues/736
             # https://github.com/actions/python-versions/releases/tag/3.12.0-6381888192
             "GitHub Actions": released("2023-10-03 09:22"),
+            # https://github.com/actions/python-versions/releases/tag/3.12.0-6381888192
+            "Azure Pipelines": released("2023-10-03 09:22"),
             # https://travis-ci.community/t/add-python-3-12/14006?u=hugovk
             "Travis CI": today,
         },
