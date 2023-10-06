@@ -84,7 +84,7 @@ releases = {
             # https://github.com/actions/setup-python/issues/736
             # https://github.com/actions/python-versions/releases/tag/3.12.0-6381888192
             "GitHub Actions": released("2023-10-03 09:22"),
-            # https://travis-ci.community/c/languages/python/50
+            # https://travis-ci.community/t/add-python-3-12/14006?u=hugovk
             "Travis CI": today,
         },
     },
