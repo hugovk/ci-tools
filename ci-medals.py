@@ -91,6 +91,27 @@ releases = {
 }
 
 
+def get_medals(ci_dates: list[tuple[str, dt.datetime]]) -> dict[str, int]:
+    # Initialise medal counter
+    medal = 0
+
+    # Create a dictionary to store the medals and assign gold
+    medals = {ci_dates[0][0]: medal}
+
+    # Assign medals based on the sorted order, with shared medals for the same time
+    for i, ci in enumerate(ci_dates):
+        if i == 0:
+            continue
+        medal += 1
+        previous_ci = ci_dates[i - 1]
+        if ci[1] == previous_ci[1]:
+            medals[ci[0]] = medals[previous_ci[0]]
+        else:
+            medals[ci[0]] = medal
+
+    return medals
+
+
 def get_medal(i: int) -> str:
     if i == 0:
         return "🥇"
@@ -150,8 +171,10 @@ def do_year(
         ci_releases.items(), key=lambda ci_date: ci_date[1] - python_release
     )
 
+    medals = get_medals(sorted_by_date)
+
     for i, (ci, value) in enumerate(sorted_by_date):
-        medal = get_medal(i)
+        medal = get_medal(medals[ci])
         delta = get_delta(value, python_release)
         name = get_name(ci, twitter)
         arrow = get_arrow(last_standing, ci, i)
