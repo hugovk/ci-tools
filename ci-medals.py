@@ -127,18 +127,18 @@ def get_delta(value: dt.datetime, python_release: dt.datetime) -> str:
     return humanize.naturaldelta(value - python_release, months=False)
 
 
-def get_name(name: str, twitter: bool) -> str:
-    if not twitter:
+def get_name(name: str, mastodon: bool) -> str:
+    if not mastodon:
         return name
 
-    if name == "AppVeyor":
-        return "@AppVeyor"
-    if name == "Azure Pipelines":
-        return "@AzureDevOps Pipelines"
+    # if name == "AppVeyor":
+    #     return "@AppVeyor"
+    # if name == "Azure Pipelines":
+    #     return "@AzureDevOps Pipelines"
     if name == "GitHub Actions":
-        return "@GitHub Actions"
-    if name == "Travis CI":
-        return "@TravisCI"
+        return "@github@hachyderm.io Actions"
+    # if name == "Travis CI":
+    #     return "@TravisCI"
     return name
 
 
@@ -158,7 +158,7 @@ def get_arrow(last_standing: list, ci_name: str, new_position: int) -> str:
 
 
 def do_year(
-    last_standing: list, version: str, data: dict, twitter: bool = False
+    last_standing: list, version: str, data: dict, mastodon: bool = False
 ) -> list:
     new_standing = []
 
@@ -176,7 +176,7 @@ def do_year(
     for i, (ci, value) in enumerate(sorted_by_date):
         medal = get_medal(medals[ci])
         delta = get_delta(value, python_release)
-        name = get_name(ci, twitter)
+        name = get_name(ci, mastodon)
         arrow = get_arrow(last_standing, ci, i)
         print(f"{medal:<4}{delta}: {name} {arrow}")
         new_standing.append(ci)
@@ -190,14 +190,17 @@ def main():
         description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
-        "-t", "--twitter", action="store_true", help="Use Twitter usernames"
+        "-m", "--mastodon", action="store_true", help="Use Mastodon usernames"
     )
     args = parser.parse_args()
 
     last_standing = []
 
     for version, value in releases.items():
-        last_standing = do_year(last_standing, version, value, args.twitter)
+        last_standing = do_year(last_standing, version, value, args.mastodon)
+
+    if args.mastodon:
+        print("#Python #CI #GitHubActions #AzurePipelines #TravisCI #AppVeyor")
 
 
 if __name__ == "__main__":
