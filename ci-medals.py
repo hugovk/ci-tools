@@ -85,7 +85,7 @@ releases = {
             # https://github.com/actions/python-versions/releases/tag/3.12.0-6381888192
             "Azure Pipelines": released("2023-10-03 09:22"),
             # https://travis-ci.community/t/add-python-3-12/14006?u=hugovk
-            "Travis CI": today,
+            "Travis CI": released("2023-10-23 12:45"),
         },
     },
 }
