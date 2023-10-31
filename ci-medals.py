@@ -78,7 +78,7 @@ releases = {
         "python_release": released("2023-10-02 19:48"),
         "ci_releases": {
             # https://github.com/appveyor/ci/issues/3879
-            "AppVeyor": today,
+            "AppVeyor": released("2023-10-31 00:30"),
             # https://github.com/actions/setup-python/issues/736
             # https://github.com/actions/python-versions/releases/tag/3.12.0-6381888192
             "GitHub Actions": released("2023-10-03 09:22"),
