@@ -17,6 +17,21 @@ from pathlib import Path
 import git  # pip install GitPython
 
 
+def clean_url(url: str) -> str:
+    # git@github.com:user/repo.git
+    # ->
+    # https://github.com/user/repo.git
+    if url.startswith("git@"):
+        url = "https://" + url.removeprefix("git@").replace(":", "/")
+
+    # https://github.com/user/repo.git
+    # ->
+    # https://github.com:user/repo
+    url = url.removesuffix(".git")
+
+    return url
+
+
 def check_pattern(pattern: str, thing: str) -> bool:
     if not pattern or pattern in thing:
         return True
@@ -33,7 +48,8 @@ def get_gitlab_url(origin_url: str) -> str | None:
 def do_ci(args: argparse.Namespace) -> None:
     # Find the user/repo of the Git origin
     git_repo = git.Repo(".")
-    origin_url = list(git_repo.remotes.origin.urls)[0].removesuffix(".git")
+    origin_url = list(git_repo.remotes.origin.urls)[0]
+    origin_url = clean_url(origin_url)
     print(origin_url)
     user, repo = origin_url.rstrip("/").split("/")[-2:]
     print(user)
