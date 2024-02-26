@@ -1,2 +1,5 @@
+# ci.py
+GitPython
+
 # ci-medals.py
 humanize
