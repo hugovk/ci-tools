@@ -139,7 +139,7 @@ def simulate(jobs, limit):
         for job in jobs:
             if job.status == "active":
                 if time >= job.started + job.length:
-                    # print("{}/{} Finished:".format(count_status(jobs, "active"), limit))
+                    # print(f"{count_status(jobs, 'active')}/{limit} Finished:")
                     job.ended = time
                     job.status = "finished"
                     # print(job)
@@ -148,7 +148,7 @@ def simulate(jobs, limit):
         for job in jobs:
             if job.status == "not started":
                 if count_status(jobs, "active") < limit:
-                    # print("{}/{} Starting:".format(count_status(jobs, "active"), limit))
+                    # print(f"{count_status(jobs, 'active')}/{limit} Starting:")
                     job.started = time
                     job.status = "active"
                     # print(job)
@@ -209,7 +209,7 @@ Finished:      2018-10-27 18:54:14
 #9.9 passed:     31 min 24 sec  os: linux, env: TEST_SUITE=integration INTEGRATION_INDEX=2, php: 7.2
 #9.10 passed:    27 min 23 sec  os: linux, env: TEST_SUITE=integration INTEGRATION_INDEX=3, php: 7.1
 #9.11 passed:    26 min 9 sec   os: linux, env: TEST_SUITE=integration INTEGRATION_INDEX=3, php: 7.2
-#9.12 passed:    13 min         os: linux, env: TEST_SUITE=functional, php: 7.2"""
+#9.12 passed:    13 min         os: linux, env: TEST_SUITE=functional, php: 7.2"""  # noqa: E501
 
     # Real use
     exitcode, output = subprocess.getstatusoutput(cmd)
