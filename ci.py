@@ -47,7 +47,17 @@ def get_gitlab_url(origin_url: str) -> str | None:
 
 def do_ci(args: argparse.Namespace) -> None:
     # Find the user/repo of the Git origin
-    git_repo = git.Repo(".")
+    repo_dir = Path(".").resolve()
+    while True:
+        try:
+            git_repo = git.Repo(repo_dir)
+            break
+        except git.exc.InvalidGitRepositoryError:
+            if repo_dir == Path("/"):
+                print("Not in a Git repo")
+                raise
+            repo_dir = repo_dir.parent
+
     origin_url = list(git_repo.remotes.origin.urls)[0]
     origin_url = clean_url(origin_url)
     print(origin_url)
@@ -58,22 +68,26 @@ def do_ci(args: argparse.Namespace) -> None:
     urls = []
 
     if check_pattern(args.pattern, "appveyor.yml") and (
-        Path(".appveyor.yml").is_file() or Path("appveyor.yml").is_file()
+        (repo_dir / Path(".appveyor.yml")).is_file()
+        or (repo_dir / Path("appveyor.yml")).is_file()
     ):
         urls.append(f"https://ci.appveyor.com/project/{user}/{repo}")
 
-    if check_pattern(args.pattern, ".travis.yml") and Path(".travis.yml").is_file():
+    if (
+        check_pattern(args.pattern, ".travis.yml")
+        and (repo_dir / Path(".travis.yml")).is_file()
+    ):
         urls.append(f"https://app.travis-ci.com/github/{user}/{repo}")
 
     if (
         check_pattern(args.pattern, ".github/workflows/")
-        and Path(".github/workflows/").is_dir()
+        and (repo_dir / Path(".github/workflows/")).is_dir()
     ):
         urls.append(f"https://github.com/{user}/{repo}/actions")
 
     if (
         check_pattern(args.pattern, ".gitlab-ci.yml")
-        and Path(".gitlab-ci.yml").is_file()
+        and (repo_dir / Path(".gitlab-ci.yml")).is_file()
     ):
         url = get_gitlab_url(origin_url)
         if url:
