@@ -68,26 +68,26 @@ def do_ci(args: argparse.Namespace) -> None:
     urls = []
 
     if check_pattern(args.pattern, "appveyor.yml") and (
-        (repo_dir / Path(".appveyor.yml")).is_file()
-        or (repo_dir / Path("appveyor.yml")).is_file()
+        Path(repo_dir / ".appveyor.yml").is_file()
+        or Path(repo_dir / "appveyor.yml").is_file()
     ):
         urls.append(f"https://ci.appveyor.com/project/{user}/{repo}")
 
     if (
         check_pattern(args.pattern, ".travis.yml")
-        and (repo_dir / Path(".travis.yml")).is_file()
+        and Path(repo_dir / ".travis.yml").is_file()
     ):
         urls.append(f"https://app.travis-ci.com/github/{user}/{repo}")
 
     if (
         check_pattern(args.pattern, ".github/workflows/")
-        and (repo_dir / Path(".github/workflows/")).is_dir()
+        and Path(repo_dir / ".github/workflows/").is_dir()
     ):
         urls.append(f"https://github.com/{user}/{repo}/actions")
 
     if (
         check_pattern(args.pattern, ".gitlab-ci.yml")
-        and (repo_dir / Path(".gitlab-ci.yml")).is_file()
+        and Path(repo_dir / ".gitlab-ci.yml").is_file()
     ):
         url = get_gitlab_url(origin_url)
         if url:
