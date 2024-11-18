@@ -116,8 +116,11 @@ class Job:
         self.ended = False
 
     def __str__(self):
-        return "{}\tLength: {}\tStarted: {}\tEnded: {}".format(
-            self.id, self.length, self.started, self.ended
+        return (
+            f"{self.id}"
+            f"\tLength: {self.length}"
+            f"\tStarted: {self.started}"
+            f"\tEnded: {self.ended}"
         )
 
 
