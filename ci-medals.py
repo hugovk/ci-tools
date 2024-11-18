@@ -88,6 +88,19 @@ releases = {
             "Travis CI": released("2023-10-23 12:45"),
         },
     },
+    "3.13": {
+        "python_release": released("2024-10-07 10:21"),
+        "ci_releases": {
+            # https://github.com/appveyor/ci/issues/3927
+            "AppVeyor": today,
+            # https://github.com/actions/python-versions/releases/tag/3.13.0-11228081754
+            "GitHub Actions": released("2024-10-08 0:58"),
+            # https://github.com/actions/python-versions/releases/tag/3.13.0-11228081754
+            "Azure Pipelines": released("2024-10-08 0:58"),
+            # https://app.travis-ci.com/github/nats-io/nats.py/jobs/627340973
+            "Travis CI": released("2024-10-22 03:11"),
+        },
+    },
 }
 
 
