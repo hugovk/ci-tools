@@ -57,7 +57,7 @@ if __name__ == "__main__":
         seconds = finish_seconds - start_seconds
         # print(seconds)
         m, s = divmod(seconds, 60)
-        print("%02dm%02ds\t%d" % (m, s, number))
+        print(f"{int(m):02}m{int(s):02}s\t{int(number)}")
 
 
 #     job_ids = sorted(build.job_ids)
