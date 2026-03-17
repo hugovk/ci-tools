@@ -8,6 +8,7 @@ https://github.com/hugovk/ci-tools
 Tip: add to your .zshrc or similar:
 alias ci=ci.py
 """
+
 from __future__ import annotations
 
 import argparse

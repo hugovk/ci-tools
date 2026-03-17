@@ -4,6 +4,7 @@
 For example: python grep-travis-logs.py -p "tests in" -n 3928
 For example: python grep-travis-logs.py -p "tests in" -n 3928.2
 """
+
 from __future__ import annotations
 
 import argparse
